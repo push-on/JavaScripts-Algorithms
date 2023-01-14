@@ -1,0 +1,7 @@
+{
+  "watch": ["src"],
+  "ignore": ["src/**/*.test.ts", "node_modules"],
+  "ext": "ts,mjs,js,json,graphql",
+  "exec": "rimraf dist && swc ./src -d dist && node dist/main.js",
+  "legacyWatch": true
+}
