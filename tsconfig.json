@@ -3,7 +3,7 @@
   "display": "Node 18",
 
   "compilerOptions": {
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "target": "ES2022",
     "module": "NodeNext",
     "outDir": "dist",

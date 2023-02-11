@@ -1,9 +1,26 @@
-const names = ['Jimi Hendrix', 'Van Halen', ' Eric Clapton'];
+interface Result {
+  FirstURL: string;
+  Text: string;
+  Description: string;
+}
 
-names.sort((a, b) => {
-  const lastNameA = a.split(' ')[1];
-  const lastNameB = b.split(' ')[1];
-  return lastNameA.localeCompare(lastNameB);
-});
+interface DuckDuckGoResponse {
+  Results: Result[];
+}
 
-console.log(names);
+async function getSearchResults(query: string): Promise<void> {
+  const API_URL = `https://api.duckduckgo.com/?q=${query}&format=json`;
+  const response = await fetch(API_URL);
+  const data: DuckDuckGoResponse = await response.json();
+  console.log("Search Results: ", data.Results);
+  data.Results.forEach(result => {
+    console.log("Result URL: ", result.FirstURL);
+    console.log("Result Title: ", result.Text);
+    console.log("Result Description: ", result.Description);
+  });
+}
+
+// Example usage:
+getSearchResults("javascript fetch api");
+
+
